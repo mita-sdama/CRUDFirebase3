@@ -50,8 +50,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 // Mengecek apakah ada data yang kosong
                 if (isEmpty(getNIM) || isEmpty(getNama) || isEmpty(getJurusan)) {
                     //Jika Ada, maka akan menampilkan pesan singkan seperti berikut ini.
-                    Toast.makeText(this@MainActivity, "Data tidak boleh ada yang kosong",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@MainActivity, "Data tidak boleh ada yang kosong",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
                     /* Jika Tidak, maka data dapat diproses dan meyimpannya pada Database
                    Menyimpan data referensi pada Database berdasarkan User ID dari masing-masing
@@ -61,11 +63,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         .setValue(data_mahasiswa(getNIM, getNama, getJurusan))
                         .addOnCompleteListener(this) {
                             //Peristiwa ini terjadi saat user berhasil menyimpan datanya kedalam Database
-                                    binding.nim.setText("")
+                            binding.nim.setText("")
                             binding.nama.setText("")
                             binding.jurusan.setText("")
-                            Toast.makeText(this@MainActivity, "Data Tersimpan",
-                                Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@MainActivity, "Data Tersimpan",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                 }
             }
@@ -77,16 +81,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     .addOnCompleteListener(object :
                         OnCompleteListener<Void> {
                         override fun onComplete(p0: Task<Void>) {
-                            Toast.makeText(this@MainActivity, "Logout   Berhasil", Toast.LENGTH_SHORT).show()
-                                    intent = Intent(applicationContext,
-                                LoginActivity::class.java)
+                            Toast.makeText(this@MainActivity, "Logout Berhasil", Toast.LENGTH_SHORT)
+                                .show()
+                            intent = Intent(
+                                applicationContext,
+                                LoginActivity::class.java
+                            )
                             startActivity(intent)
                             finish()
                         }
                     })
+
             R.id.showdata -> {
+                startActivity(Intent(this@MainActivity, MyListData::class.java))
+            }
             }
         }
     }
-}
 
